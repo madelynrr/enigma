@@ -21,8 +21,8 @@ class KeyTest < Minitest::Test
   end
 
   def test_it_splits_number_into_four_elements
-    skip
     @key.expects(:number).returns("01234")
+
     expected = ["01", "12", "23", "34"]
 
     assert_equal expected, @key.number_to_four_element_string
