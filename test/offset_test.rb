@@ -12,6 +12,12 @@ class OffsetTest < Minitest::Test
   end
 
   def test_it_has_attributes
-    assert_equal "021119", @offset.date
+    assert_instance_of Date, @offset.date
+    # assert_equal "021119", @offset.date
+  end
+
+  def test_it_is_string_in_correct_format
+    @offset.expects(:date).at_least_once.returns("")
+    assert_equal "021119", @offset.date_to_string
   end
 end
