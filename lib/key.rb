@@ -9,9 +9,11 @@ class Key
   def number_to_array
     integers = self.number.chars
     individual_keys = []
-    integers.each_cons(2) do |integer|
-      individual_keys << integer.join
-     end
+    integers.each_cons(2) {|integer| individual_keys << integer.join}
      individual_keys
+  end
+
+  def hash_of_keys
+
   end
 end
