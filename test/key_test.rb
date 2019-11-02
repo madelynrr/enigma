@@ -12,12 +12,8 @@ class KeyTest < Minitest::Test
   end
 
   def test_it_has_attributes
-    assert_equal Float, @key.number.class
+    assert_equal String, @key.number.class
+    assert_equal 5, @key.number.characters.length
   end
-
-  # def test_helper
-  #   assert_equal String, @key.class
-  #   assert_equal 5, @key.characters
-  # end
 
 end
