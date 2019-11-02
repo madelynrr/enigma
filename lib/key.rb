@@ -1,7 +1,8 @@
 class Key
 
-  def initialize
-    
-  end
+  attr_reader :number
 
+  def initialize
+    @number = rand
+  end
 end
