@@ -16,8 +16,8 @@ class KeyTest < Minitest::Test
   end
 
   def test_number_is_five_characters_and_string
-    assert_equal String, @key.number_to_key_characteristics.class
-    assert_equal 5, @key.number_to_key_characteristics.chars.length
+    assert_equal String, @key.number_to_key.class
+    assert_equal 5, @key.number_to_key.chars.length
   end
 
   def test_it_splits_number_into_four_elements
@@ -25,7 +25,7 @@ class KeyTest < Minitest::Test
 
     expected = ["01", "12", "23", "34"]
 
-    assert_equal expected, @key.number_to_four_element_string
+    assert_equal expected, @key.number_to_array
   end
 
 end
