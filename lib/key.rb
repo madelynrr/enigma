@@ -6,12 +6,12 @@ class Key
     @number = rand(99999).to_s.rjust(5, '0')
   end
 
-  # def number_to_key
-  #   number_to_string = @number.to_s
-  #   number_to_string.rjust(5, '0')
-  # end
-
-  # def number_to_array
-  #
-  # end
+  def number_to_array
+    integers = self.number.chars
+    individual_keys = []
+    integers.each_cons(2) do |integer|
+      individual_keys << integer.join
+     end
+     individual_keys
+  end
 end
