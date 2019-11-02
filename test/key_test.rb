@@ -25,8 +25,7 @@ class KeyTest < Minitest::Test
   end
 
   def test_it_returns_array_of_keys
-    skip
-    @key.expects(:number).at_least_once.returns("10234")
+    @key.expects(:number).at_least_once.returns("01234")
 
     expected = {
                 "A" => "01",
@@ -37,7 +36,5 @@ class KeyTest < Minitest::Test
 
     assert_equal expected, @key.hash_of_keys
   end
-
-
 
 end
