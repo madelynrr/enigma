@@ -1,15 +1,20 @@
 {
   "Unit Tests": {
     "coverage": {
-      "/Users/madelynromero/turing/mod1/projects/enigma/lib/enigma.rb": [
+      "/Users/madelynromero/turing/mod1/projects/enigma/lib/key.rb": [
         1,
         null,
         1,
+        null,
+        1,
+        2,
+        null,
+        null,
         null,
         null,
         null
       ]
     },
-    "timestamp": 1572712879
+    "timestamp": 1572713806
   }
 }
