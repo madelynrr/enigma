@@ -11,6 +11,14 @@ class Enigma
     end
   end
 
+  def test_date_is_valid(date)
+    if date.class == String && date.chars.length == 6 && date.count("0123456789") == 6
+      Offset.new(date)
+    else
+      Offset.new
+    end
+  end
+
   # def final_shifts(key, date)
   #   key.merge(date) { |letter, key_val, date_val| key_val.to_1 += date_val.to_i}
   # end
