@@ -9,7 +9,7 @@ class Offset
     @date = Date.today
   end
 
-  def formatted_date_to_string
+  def format_date
     date.strftime("%d%m%y")
   end
 
@@ -22,4 +22,5 @@ class Offset
 
     all_ints[-4..-1]
   end
+
 end
