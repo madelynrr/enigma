@@ -5,16 +5,16 @@ class Offset
 
   attr_reader :date
 
-  def initialize
-    @date = Date.today
+  def initialize(date = Date.today)
+    @date = date
   end
 
-  def formatted_date_to_string
+  def format_date
     date.strftime("%d%m%y")
   end
 
   def date_squared
-    formatted_date_to_string.to_i * formatted_date_to_string.to_i
+    formatted_date_to_string.to_i ** 2
   end
 
   def offsets_as_strings
@@ -22,4 +22,5 @@ class Offset
 
     all_ints[-4..-1]
   end
+
 end

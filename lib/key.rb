@@ -5,8 +5,8 @@ class Key
 
   attr_reader :number
 
-  def initialize
-    @number = rand(99999).to_s.rjust(5, '0')
+  def initialize(number = rand(99999).to_s.rjust(5, '0'))
+    @number = number
   end
 
   def number_to_array

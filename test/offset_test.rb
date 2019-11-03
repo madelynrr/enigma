@@ -16,7 +16,7 @@ class OffsetTest < Minitest::Test
   end
 
   def test_it_is_string_in_correct_format
-    assert_equal Date.today.strftime("%d%m%y"), @offset.formatted_date_to_string
+    assert_equal Date.today.strftime("%d%m%y"), @offset.format_date
   end
 
   def test_it_can_square_date
