@@ -1,6 +1,6 @@
 require './test/test_helper'
 require './lib/key'
-# require './test/key_test'
+require './test/key_test'
 require './lib/offset'
 require './test/offset_test.rb'
 require './lib/enigma'
@@ -19,22 +19,22 @@ class EnigmaTest < Minitest::Test
     @enigma.encrypt("hello world", "02715", "040895")
     key = "02715"
 
-    assert_equal "02715", @enigma.test_key_is_valid(key).number
+    assert_equal "02715", @enigma.test_key_is_valid(key)
 
     @enigma.encrypt("hello world", "2715", "040895")
     key = "2715"
 
-    assert_equal false, "2715" == @enigma.test_key_is_valid(key).number
+    assert_equal false, "2715" == @enigma.test_key_is_valid(key)
 
     @enigma.encrypt("hello world", "class", "040895")
     key = "class"
 
-    assert_equal false, "class" == @enigma.test_key_is_valid(key).number
+    assert_equal false, "class" == @enigma.test_key_is_valid(key)
 
     @enigma.encrypt("hello world", 10234, "040895")
     key = 01234
 
-    assert_equal false, 01234 == @enigma.test_key_is_valid(key).number
+    assert_equal false, 01234 == @enigma.test_key_is_valid(key)
   end
 
   def test_it_tests_date_is_valid
@@ -60,7 +60,6 @@ class EnigmaTest < Minitest::Test
     @enigma.encrypt("hello world", "02715", "040895")
     key = "02715"
     date = "040895"
-
     expected = {
                 "A" => 3,
                 "B" => 27,
