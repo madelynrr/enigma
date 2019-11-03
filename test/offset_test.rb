@@ -18,4 +18,30 @@ class OffsetTest < Minitest::Test
   def test_it_is_string_in_correct_format
     assert_equal Date.today.strftime("%d%m%y"), @offset.formatted_date_to_string
   end
+
+  def test_it_can_square_date
+    @offset.expects(:formatted_date_to_string).at_least_once.returns("031119")
+
+    assert_equal 968392161, @offset.date_squared
+  end
+
+  def test_it_can_return_last_four_digits_of_square_as_string_in_array
+    @offset.expects(:date_squared).at_least_once.returns(968392161)
+    expected = ["2", "1", "6", "1"]
+
+    assert_equal expected, @offset.offsets_as_strings
+  end
+
+  def test_it_can_return_offsets_in_hash
+    @offset.expects(:offsets_as_strings).at_least_once.returns(["2", "1", "6", "1"])
+
+    expected = {
+                "A" => "2",
+                "B" => "1",
+                "C" => "6",
+                "D" => "1"
+                }
+
+    assert_equal expected, @offset.offsets_in_hash
+  end
 end
