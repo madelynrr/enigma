@@ -40,19 +40,19 @@ class EnigmaTest < Minitest::Test
   def test_it_tests_date_is_valid
     @enigma.encrypt("hello world", "02715", "040895")
     date = "040895"
-    assert_equal true, "040895" == @enigma.test_date_is_valid(date).date
+    assert_equal true, "040895" == @enigma.test_date_is_valid(date)
 
     @enigma.encrypt("hello world", "02715", "40895")
     date = "40895"
-    assert_equal false, "40895" == @enigma.test_date_is_valid(date).date
+    assert_equal false, "40895" == @enigma.test_date_is_valid(date)
 
     @enigma.encrypt("hello world", "02715", "cccccc")
     date = "cccccc"
-    assert_equal false, "cccccc" == @enigma.test_date_is_valid(date).date
+    assert_equal false, "cccccc" == @enigma.test_date_is_valid(date)
 
     @enigma.encrypt("hello world", "02715", 110895)
     date = 110895
-    assert_equal false, 110895 == @enigma.test_date_is_valid(date).date
+    assert_equal false, 110895 == @enigma.test_date_is_valid(date)
   end
 
   def test_it_creates_final_shifts
