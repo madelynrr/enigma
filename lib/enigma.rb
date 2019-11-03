@@ -5,9 +5,9 @@ class Enigma
 
   def test_key_is_valid(key)
     if key.class == String && key.chars.length == 5 && key.count("0123456789") == 5
-      Key.new(key)
+      Key.new(key).number
     else
-      Key.new
+      Key.new.number
     end
   end
 
@@ -17,6 +17,9 @@ class Enigma
     else
       Offset.new
     end
+  end
+
+  def final_shifts(key, date)
   end
 
   # def final_shifts(key, date)
