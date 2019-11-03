@@ -15,24 +15,6 @@ class EnigmaTest < Minitest::Test
     assert_instance_of Enigma, @enigma
   end
 
-  def test_it_can_encrypt
-    skip
-    expected = {
-      encryption: "keder ohulw",
-      key: "02715",
-      date: "040895"
-      }
-
-    assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
-  end
-
-  def test_encrypt_uses_todays_date_if_none_given
-    skip
-    @enigma.encrypt("hello world", "02715", "040895")
-
-    # assert_equal "040895", date
-  end
-
   def test_it_tests_key_is_valid_or_generates_new_key
     @enigma.encrypt("hello world", "02715", "040895")
     key = "02715"
@@ -55,6 +37,24 @@ class EnigmaTest < Minitest::Test
     assert_equal false, 01234 == @enigma.test_key_is_valid(key).number
   end
 
+  def test_it_tests_date_is_valid
+    @enigma.encrypt("hello world", "02715", "040895")
+    date = "040895"
+    assert_equal true, "040895" == @enigma.test_date_is_valid(date).date
+
+    @enigma.encrypt("hello world", "02715", "40895")
+    date = "40895"
+    assert_equal false, "40895" == @enigma.test_date_is_valid(date).date
+
+    @enigma.encrypt("hello world", "02715", "cccccc")
+    date = "cccccc"
+    assert_equal false, "cccccc" == @enigma.test_date_is_valid(date).date
+
+    @enigma.encrypt("hello world", "02715", 110895)
+    date = 110895
+    assert_equal false, 110895 == @enigma.test_date_is_valid(date).date
+  end
+
   def test_it_creates_final_shifts
     skip
     @enigma.encrypt("hello world", "02715", "040895")
@@ -71,18 +71,21 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @enigma.final_shifts(key, date)
   end
 
-  def test_it_formats_given_key
-    # skip
-    @enigma.encrypt("hello world", "02715", "040895")
-    key = "02715"
-
+  def test_it_can_encrypt
+    skip
     expected = {
-                "A" => "02",
-                "B" => "27",
-                "C" => "71",
-                "D" => "15"
-                }
+      encryption: "keder ohulw",
+      key: "02715",
+      date: "040895"
+      }
 
-    # assert_equal expected, @enigma.format_key(key)
+    assert_equal expected, @enigma.encrypt("hello world", "02715", "040895")
+  end
+
+  def test_encrypt_uses_todays_date_if_none_given
+    skip
+    @enigma.encrypt("hello world", "02715", "040895")
+
+    # assert_equal "040895", date
   end
 end
