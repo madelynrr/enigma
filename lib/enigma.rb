@@ -13,9 +13,9 @@ class Enigma
 
   def test_date_is_valid(date)
     if date.class == String && date.chars.length == 6 && date.count("0123456789") == 6
-      Offset.new(date)
+      Offset.new(date).date
     else
-      Offset.new
+      Offset.new.date
     end
   end
 
