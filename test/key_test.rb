@@ -34,7 +34,7 @@ class KeyTest < Minitest::Test
                 "D" => "34"
                 }
 
-    assert_equal expected, @key.hash_of_keys
+    assert_equal expected, @key.turn_to_formatted_hash(@key.number_to_array)
   end
 
 end
