@@ -14,7 +14,7 @@ class Offset
   end
 
   def date_squared
-    formatted_date_to_string.to_i * formatted_date_to_string.to_i
+    formatted_date_to_string.to_i ** 2
   end
 
   def offsets_as_strings
