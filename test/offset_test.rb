@@ -42,6 +42,6 @@ class OffsetTest < Minitest::Test
                 "D" => "1"
                 }
 
-    assert_equal expected, @offset.offsets_in_hash
+    assert_equal expected, @offset.turn_to_formatted_hash(@offset.offsets_as_strings)
   end
 end
