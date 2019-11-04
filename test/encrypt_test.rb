@@ -95,9 +95,27 @@ class EncryptTest < Minitest::Test
 
   def test_it_turns_message_into_array_of_arrays
     message = "Hello world!"
-    expected = [["H", "e", "l", "l"], ["o", " ", "w", "o"], ["r", "l", "d", "!"]]
+    expected = [["h", "e", "l", "l"], ["o", " ", "w", "o"], ["r", "l", "d", "!"]]
 
     assert_equal expected, @encrypt.message_to_arrays(message)
+  end
+
+  def test_it_changes_letters_by_corresponding_shift
+    skip
+    mess_arrays = [["h", "e", "l", "l"], ["o", " ", "w", "o"], ["r", "l", "d", "!"]]
+
+    final_shifts = [2, 1, 6, 1]
+
+    expected = [["j", "f", "r", "m"], ["q", "a", "c", "m"], ["t", "m", "j", "!"]]
+
+    assert_equal expected, @encrypt.shift_message_arrays(mess_arrays, final_shifts)
+  end
+
+  def test_it_can_add_letter_index_to_final_shift
+    letter = "m"
+    final_shift = 2
+
+    assert_equal 14, @encrypt.add_indexes(letter, final_shift)
   end
 
 end
