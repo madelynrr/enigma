@@ -1,7 +1,7 @@
-require './lib/key_offset_module'
+# require './lib/key_offset_module'
 
 class Encrypt
-  include KeyOffset
+  # include KeyOffset
 
   attr_reader :message, :key, :date, :alphabet
 
@@ -28,26 +28,27 @@ class Encrypt
     end
   end
 
-  def key_to_hash(key)
+  def key_to_array(key)
     key = test_key_is_valid(key)
-    key_array = key.number_to_array
-    turn_to_formatted_hash(key_array)
+    key.number_to_array
+    # turn_to_formatted_hash(key_array)
   end
 
-  def date_to_hash(date)
+  def date_to_array(date)
     date_string = test_date_is_valid(date)
     date_squared = date_string.date_squared(date_string.date)
     all_ints = date_squared.to_s.chars
-    final_four = all_ints[-4..-1]
-    turn_to_formatted_hash(final_four)
+    all_ints[-4..-1]
+    # turn_to_formatted_hash(final_four)
   end
 
   def final_shifts(key, date)
-    keys = key_to_hash(key)
-    offsets = date_to_hash(date)
+    keys = key_to_array(key)
+    offsets = date_to_array(date)
 
-    keys.merge(offsets) do |letter, old_val, new_val|
-      old_val.to_i + new_val.to_i
+    final_shift = keys.zip(offsets)
+    final_shift.flat_map do |shift|
+      shift.first.to_i + shift.last.to_i
     end
   end
 
@@ -60,9 +61,9 @@ class Encrypt
     message_arrays
   end
 
-  def shift_message_arrays(mess_arrays, final_shifts)
-
-  end
+  # def shift_message_arrays(mess_arrays, final_shifts)
+  #
+  # end
 
   def add_indexes(letter, final_shift)
     alphabet.index(letter) + final_shift
