@@ -3,12 +3,13 @@ require './lib/key_offset_module'
 class Encrypt
   include KeyOffset
 
-  attr_reader :message, :key, :date
+  attr_reader :message, :key, :date, :alphabet
 
   def initialize(message, key, date)
     @message = message
     @key = key
     @date = date
+    @alphabet = ("a".."z").to_a << " "
   end
 
   def test_key_is_valid(key)
@@ -41,4 +42,12 @@ class Encrypt
     turn_to_formatted_hash(final_four)
   end
 
+  def final_shifts(key, date)
+    keys = key_to_hash(key)
+    offsets = date_to_hash(date)
+
+    keys.merge(offsets) do |letter, old_val, new_val|
+      old_val.to_i + new_val.to_i
+    end
+  end
 end
