@@ -36,6 +36,15 @@ class Enigma
     turn_to_formatted_hash(final_four)
   end
 
+  def final_shifts(key, date)
+    keys = key_to_hash(key)
+    offsets = date_to_hash(date)
+
+    keys.merge(offsets) do |letter, old_val, new_val|
+      old_val.to_i + new_val.to_i
+    end
+  end
+
 
   # def final_shifts(key, date)
   #   key.merge(date) { |letter, key_val, date_val| key_val.to_1 += date_val.to_i}
