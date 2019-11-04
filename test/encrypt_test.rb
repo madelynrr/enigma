@@ -6,10 +6,7 @@ require './lib/enigma'
 class EncryptTest < Minitest::Test
 
   def setup
-    message = "hello world"
-    key = "02715"
-    date = "040895"
-    @encrypt = Encrypt.new(message, key, date)
+    @encrypt = Encrypt.new("hello world", "02715",  "040895")
   end
 
   def test_it_exists
@@ -20,10 +17,6 @@ class EncryptTest < Minitest::Test
     assert_equal "hello world", @encrypt.message
     assert_equal "02715", @encrypt.key
     assert_equal "040895", @encrypt.date
-  end
-
-  def test_test
-    assert_equal true, @encrypt.test
   end
 
   def test_it_tests_key_is_valid_or_generates_new_key
@@ -44,9 +37,7 @@ class EncryptTest < Minitest::Test
   end
 
   def test_it_can_format_key_into_hash
-    skip
-    @enigma.encrypt("hello world", "02715", "040895")
-    key = "02715"
+    key = @encrypt.key
     expected = {
                 "A" => "02",
                 "B" => "27",
