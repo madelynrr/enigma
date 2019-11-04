@@ -56,39 +56,24 @@ class EncryptTest < Minitest::Test
     assert_equal false, 110895 == encrypt_3.test_date_is_valid(date).date
   end
 
-  def test_it_can_format_key_into_hash
+  def test_it_can_format_key_into_array
     key = @encrypt.key
-    expected = {
-                "A" => "02",
-                "B" => "27",
-                "C" => "71",
-                "D" => "15"
-                }
+    expected = ["02", "27", "71", "15"]
 
-    assert_equal expected, @encrypt.key_to_hash(key)
+    assert_equal expected, @encrypt.key_to_array(key)
   end
 
   def test_it_can_format_date_into_hash
     date = "040895"
-    expected = {
-                "A" => "1",
-                "B" => "0",
-                "C" => "2",
-                "D" => "5"
-                }
+    expected = ["1", "0", "2", "5"]
 
-    assert_equal expected, @encrypt.date_to_hash(date)
+    assert_equal expected, @encrypt.date_to_array(date)
   end
 
   def test_it_creates_final_shifts
     key = "02715"
     date = "040895"
-    expected = {
-                "A" => 3,
-                "B" => 27,
-                "C" => 73,
-                "D" => 20
-                }
+    expected = [3, 27, 73, 20]
 
     assert_equal expected, @encrypt.final_shifts(key, date)
   end
@@ -100,16 +85,16 @@ class EncryptTest < Minitest::Test
     assert_equal expected, @encrypt.message_to_arrays(message)
   end
 
-  def test_it_changes_letters_by_corresponding_shift
-    skip
-    mess_arrays = [["h", "e", "l", "l"], ["o", " ", "w", "o"], ["r", "l", "d", "!"]]
-
-    final_shifts = [2, 1, 6, 1]
-
-    expected = [["j", "f", "r", "m"], ["q", "a", "c", "m"], ["t", "m", "j", "!"]]
-
-    assert_equal expected, @encrypt.shift_message_arrays(mess_arrays, final_shifts)
-  end
+  # def test_it_changes_letters_by_corresponding_shift
+  #   skip
+  #   mess_arrays = [["h", "e", "l", "l"], ["o", " ", "w", "o"], ["r", "l", "d", "!"]]
+  #
+  #   final_shifts = [2, 1, 6, 1]
+  #
+  #   expected = [["j", "f", "r", "m"], ["q", "a", "c", "m"], ["t", "m", "j", "!"]]
+  #
+  #   assert_equal expected, @encrypt.shift_message_arrays(mess_arrays, final_shifts)
+  # end
 
   def test_it_can_add_letter_index_to_final_shift
     letter = "m"
