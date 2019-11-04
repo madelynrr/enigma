@@ -1,7 +1,4 @@
-# require './lib/key_offset_module'
-
 class Encrypt
-  # include KeyOffset
 
   attr_reader :message, :key, :date, :alphabet
 
@@ -31,7 +28,6 @@ class Encrypt
   def key_to_array(key)
     key = test_key_is_valid(key)
     key.number_to_array
-    # turn_to_formatted_hash(key_array)
   end
 
   def date_to_array(date)
@@ -39,7 +35,6 @@ class Encrypt
     date_squared = date_string.date_squared(date_string.date)
     all_ints = date_squared.to_s.chars
     all_ints[-4..-1]
-    # turn_to_formatted_hash(final_four)
   end
 
   def final_shifts(key, date)
