@@ -16,9 +16,9 @@ class Enigma
 
   def test_date_is_valid(date)
     if date.class == String && date.chars.length == 6 && date.count("0123456789") == 6
-      Offset.new(date).date
+      Offset.new(date)
     else
-      Offset.new.date
+      Offset.new
     end
   end
 
@@ -28,8 +28,14 @@ class Enigma
     turn_to_formatted_hash(key_array)
   end
 
-  def final_shifts(key, date)
+  def date_to_hash(date)
+    date_string = test_date_is_valid(date)
+    date_squared = date_string.date_squared(date_string.date)
+    all_ints = date_squared.to_s.chars
+    final_four = all_ints[-4..-1]
+    turn_to_formatted_hash(final_four)
   end
+
 
   # def final_shifts(key, date)
   #   key.merge(date) { |letter, key_val, date_val| key_val.to_1 += date_val.to_i}
