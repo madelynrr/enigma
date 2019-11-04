@@ -85,22 +85,30 @@ class EncryptTest < Minitest::Test
     assert_equal expected, @encrypt.message_to_arrays(message)
   end
 
-  # def test_it_changes_letters_by_corresponding_shift
-  #   skip
-  #   mess_arrays = [["h", "e", "l", "l"], ["o", " ", "w", "o"], ["r", "l", "d", "!"]]
-  #
-  #   final_shifts = [2, 1, 6, 1]
-  #
-  #   expected = [["j", "f", "r", "m"], ["q", "a", "c", "m"], ["t", "m", "j", "!"]]
-  #
-  #   assert_equal expected, @encrypt.shift_message_arrays(mess_arrays, final_shifts)
-  # end
+  def test_it_changes_letters_by_corresponding_shift
+    skip
+    mess_arrays = [["h", "e", "l", "l"], ["o", " ", "w", "o"], ["r", "l", "d", "!"]]
+
+    final_shifts = [2, 1, 6, 1]
+
+    expected = [["j", "f", "r", "m"], ["q", "a", "c", "m"], ["t", "m", "j", "!"]]
+
+    assert_equal expected, @encrypt.shift_message_arrays(mess_arrays, final_shifts)
+  end
 
   def test_it_can_add_letter_index_to_final_shift
     letter = "m"
     final_shift = 2
 
     assert_equal 14, @encrypt.add_indexes(letter, final_shift)
+  end
+
+  def test_it_rotates_each_letter_in_four_elemet_array
+    array = ["h", "e", "l", "l"]
+    final_shifts = [2, 1, 6, 1]
+    expected = ["j", "f", "r", "m"]
+
+    assert_equal expected, @encrypt.rotate_array(array, final_shifts)
   end
 
 end
