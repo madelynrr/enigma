@@ -56,12 +56,22 @@ class Encrypt
     message_arrays
   end
 
-  # def shift_message_arrays(mess_arrays, final_shifts)
-  #
-  # end
+  def shift_message_arrays(mess_arrays, final_shifts)
+    mess_arrays.map do |array|
+      rotate_array(array, final_shifts)
+    end
+  end
 
   def add_indexes(letter, final_shift)
     alphabet.index(letter) + final_shift
+  end
+
+  def rotate_array(letters, final_shifts)
+    array = []
+    letters.to_enum.with_index do |letter, index|
+      array << @alphabet.rotate(add_indexes(letter, final_shifts[index])).first
+    end
+    array
   end
 
 end

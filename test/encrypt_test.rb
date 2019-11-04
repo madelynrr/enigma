@@ -86,12 +86,12 @@ class EncryptTest < Minitest::Test
   end
 
   def test_it_changes_letters_by_corresponding_shift
-    skip
+    # skip
     mess_arrays = [["h", "e", "l", "l"], ["o", " ", "w", "o"], ["r", "l", "d", "!"]]
 
     final_shifts = [2, 1, 6, 1]
 
-    expected = [["j", "f", "r", "m"], ["q", "a", "c", "m"], ["t", "m", "j", "!"]]
+    expected = [["j", "f", "r", "m"], ["q", "a", "b", "p"], ["t", "m", "j", "!"]]
 
     assert_equal expected, @encrypt.shift_message_arrays(mess_arrays, final_shifts)
   end
