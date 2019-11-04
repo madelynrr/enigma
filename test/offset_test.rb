@@ -17,7 +17,6 @@ class OffsetTest < Minitest::Test
    assert_equal true, @offset.date.count("0123456789") == 6
   end
 
-
   def test_it_can_square_date
     date = "031119"
 
@@ -31,16 +30,4 @@ class OffsetTest < Minitest::Test
     assert_equal expected, @offset.offsets_as_strings(square)
   end
 
-  # def test_it_can_return_offsets_in_hash
-  #   @offset.expects(:offsets_as_strings).at_least_once.returns(["2", "1", "6", "1"])
-  #
-  #   expected = {
-  #               "A" => "2",
-  #               "B" => "1",
-  #               "C" => "6",
-  #               "D" => "1"
-  #               }
-  #
-  #   assert_equal expected, @offset.turn_to_formatted_hash(@offset.offsets_as_strings)
-  # end
 end
