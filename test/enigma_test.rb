@@ -40,19 +40,19 @@ class EnigmaTest < Minitest::Test
   def test_it_tests_date_is_valid
     @enigma.encrypt("hello world", "02715", "040895")
     date = "040895"
-    assert_equal true, "040895" == @enigma.test_date_is_valid(date)
+    assert_equal true, "040895" == @enigma.test_date_is_valid(date).date
 
     @enigma.encrypt("hello world", "02715", "40895")
     date = "40895"
-    assert_equal false, "40895" == @enigma.test_date_is_valid(date)
+    assert_equal false, "40895" == @enigma.test_date_is_valid(date).date
 
     @enigma.encrypt("hello world", "02715", "cccccc")
     date = "cccccc"
-    assert_equal false, "cccccc" == @enigma.test_date_is_valid(date)
+    assert_equal false, "cccccc" == @enigma.test_date_is_valid(date).date
 
     @enigma.encrypt("hello world", "02715", 110895)
     date = 110895
-    assert_equal false, 110895 == @enigma.test_date_is_valid(date)
+    assert_equal false, 110895 == @enigma.test_date_is_valid(date).date
   end
 
   def test_it_can_format_key_into_hash
@@ -71,13 +71,17 @@ class EnigmaTest < Minitest::Test
   def test_it_can_format_date_into_hash
     @enigma.encrypt("hello world", "02715", "040895")
     date = "040895"
-    expected =
+    expected = {
+                "A" => "1",
+                "B" => "0",
+                "C" => "2",
+                "D" => "5"
+                }
 
-
+    assert_equal expected, @enigma.date_to_hash(date)
   end
 
   def test_it_creates_final_shifts
-    skip
     @enigma.encrypt("hello world", "02715", "040895")
     key = "02715"
     date = "040895"
