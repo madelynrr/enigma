@@ -19,6 +19,14 @@ class Encrypt
     end
   end
 
+  def test_date_is_valid(date)
+    if date.class == String && date.chars.length == 6 && date.count("0123456789") == 6
+      Offset.new(date)
+    else
+      Offset.new
+    end
+  end
+
   def key_to_hash(key)
     key = test_key_is_valid(key)
     key_array = key.number_to_array
