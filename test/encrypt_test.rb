@@ -18,6 +18,8 @@ class EncryptTest < Minitest::Test
     assert_equal "hello world", @encrypt.message
     assert_equal "02715", @encrypt.key
     assert_equal "040895", @encrypt.date
+    expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k","l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
+    assert_equal expected, @encrypt.alphabet
   end
 
   def test_it_tests_key_is_valid_or_generates_new_key
@@ -77,5 +79,20 @@ class EncryptTest < Minitest::Test
 
     assert_equal expected, @encrypt.date_to_hash(date)
   end
+
+  def test_it_creates_final_shifts
+    key = "02715"
+    date = "040895"
+    expected = {
+                "A" => 3,
+                "B" => 27,
+                "C" => 73,
+                "D" => 20
+                }
+
+    assert_equal expected, @encrypt.final_shifts(key, date)
+  end
+
+  # def test_
 
 end
