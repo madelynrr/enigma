@@ -50,4 +50,8 @@ class Encrypt
       old_val.to_i + new_val.to_i
     end
   end
+
+  def message_to_array(message)
+    message.chars
+  end
 end
