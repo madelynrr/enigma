@@ -51,7 +51,13 @@ class Encrypt
     end
   end
 
-  def message_to_array(message)
-    message.chars
+  def message_to_arrays(message)
+    characters = message.chars
+    message_arrays = []
+    until characters.length == 0
+      message_arrays << characters.slice!(0..3)
+    end
+    message_arrays
   end
+
 end
