@@ -24,12 +24,12 @@ class OffsetTest < Minitest::Test
     assert_equal 968392161, @offset.date_squared(date)
   end
 
-  # def test_it_can_return_last_four_digits_of_square_as_string_in_array
-  #   @offset.expects(:square).at_least_once.returns(968392161)
-  #   expected = ["2", "1", "6", "1"]
-  #
-  #   assert_equal expected, @offset.offsets_as_strings(square)
-  # end
+  def test_it_can_return_last_four_digits_of_square_as_string_in_array
+    square = 968392161
+    expected = ["2", "1", "6", "1"]
+
+    assert_equal expected, @offset.offsets_as_strings(square)
+  end
 
   def test_it_can_return_offsets_in_hash
     @offset.expects(:offsets_as_strings).at_least_once.returns(["2", "1", "6", "1"])
