@@ -12,25 +12,24 @@ class OffsetTest < Minitest::Test
   end
 
   def test_it_has_attributes
-    assert_instance_of Date, @offset.date
+   assert_equal String, @offset.date.class
+   assert_equal 6, @offset.date.chars.length
+   assert_equal true, @offset.date.count("0123456789") == 6
   end
 
-  def test_it_is_string_in_correct_format
-    assert_equal Date.today.strftime("%d%m%y"), @offset.format_date
-  end
 
   def test_it_can_square_date
-    @offset.expects(:formatted_date_to_string).at_least_once.returns("031119")
+    date = "031119"
 
-    assert_equal 968392161, @offset.date_squared
+    assert_equal 968392161, @offset.date_squared(date)
   end
 
-  def test_it_can_return_last_four_digits_of_square_as_string_in_array
-    @offset.expects(:date_squared).at_least_once.returns(968392161)
-    expected = ["2", "1", "6", "1"]
-
-    assert_equal expected, @offset.offsets_as_strings
-  end
+  # def test_it_can_return_last_four_digits_of_square_as_string_in_array
+  #   @offset.expects(:square).at_least_once.returns(968392161)
+  #   expected = ["2", "1", "6", "1"]
+  #
+  #   assert_equal expected, @offset.offsets_as_strings(square)
+  # end
 
   def test_it_can_return_offsets_in_hash
     @offset.expects(:offsets_as_strings).at_least_once.returns(["2", "1", "6", "1"])

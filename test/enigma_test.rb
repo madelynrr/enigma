@@ -1,6 +1,6 @@
 require './test/test_helper'
 require './lib/key'
-# require './test/key_test'
+require './test/key_test'
 require './lib/offset'
 require './test/offset_test.rb'
 require './lib/enigma'
@@ -55,12 +55,36 @@ class EnigmaTest < Minitest::Test
     assert_equal false, 110895 == @enigma.test_date_is_valid(date).date
   end
 
+  def test_it_can_format_key_into_hash
+    @enigma.encrypt("hello world", "02715", "040895")
+    key = "02715"
+    expected = {
+                "A" => "02",
+                "B" => "27",
+                "C" => "71",
+                "D" => "15"
+                }
+
+    assert_equal expected, @enigma.key_to_hash(key)
+  end
+
+  def test_it_can_format_date_into_hash
+    @enigma.encrypt("hello world", "02715", "040895")
+    date = "040895"
+    expected = {
+                "A" => "1",
+                "B" => "0",
+                "C" => "2",
+                "D" => "5"
+                }
+
+    assert_equal expected, @enigma.date_to_hash(date)
+  end
+
   def test_it_creates_final_shifts
-    skip
     @enigma.encrypt("hello world", "02715", "040895")
     key = "02715"
     date = "040895"
-
     expected = {
                 "A" => 3,
                 "B" => 27,
@@ -70,6 +94,8 @@ class EnigmaTest < Minitest::Test
 
     assert_equal expected, @enigma.final_shifts(key, date)
   end
+
+
 
   def test_it_can_encrypt
     skip
@@ -88,4 +114,5 @@ class EnigmaTest < Minitest::Test
 
     # assert_equal "040895", date
   end
+
 end
