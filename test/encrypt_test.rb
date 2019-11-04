@@ -7,7 +7,7 @@ require './lib/enigma'
 class EncryptTest < Minitest::Test
 
   def setup
-    @encrypt = Encrypt.new("hello world", "02715",  "040895")
+    @encrypt = Encrypt.new("Hello world!", "02715",  "040895")
   end
 
   def test_it_exists
@@ -15,7 +15,7 @@ class EncryptTest < Minitest::Test
   end
 
   def test_it_has_attributes
-    assert_equal "hello world", @encrypt.message
+    assert_equal "Hello world!", @encrypt.message
     assert_equal "02715", @encrypt.key
     assert_equal "040895", @encrypt.date
     expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k","l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
@@ -93,6 +93,11 @@ class EncryptTest < Minitest::Test
     assert_equal expected, @encrypt.final_shifts(key, date)
   end
 
-  # def test_
+  def test_it_turns_message_into_array
+    message = "Hello world!"
+    expected = ["H", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d", "!"]
+
+    assert_equal expected, @encrypt.message_to_array(message)
+  end
 
 end
