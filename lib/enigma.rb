@@ -3,7 +3,8 @@ require './lib/key_offset_module'
 class Enigma
   include KeyOffset
 
-  def encrypt(message, key = Key.new.number, date = Offset.new.format_date)
+  def encrypt(message, key = Key.new.number, date = Offset.new.date)
+    final_shifts(key, date)
   end
 
   def test_key_is_valid(key)
@@ -44,10 +45,4 @@ class Enigma
       old_val.to_i + new_val.to_i
     end
   end
-
-
-  # def final_shifts(key, date)
-  #   key.merge(date) { |letter, key_val, date_val| key_val.to_1 += date_val.to_i}
-  # end
-
 end
