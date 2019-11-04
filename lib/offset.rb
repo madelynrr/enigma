@@ -1,7 +1,7 @@
-require './lib/key_offset_module'
+# require './lib/key_offset_module'
 
 class Offset
-  include KeyOffset
+  # include KeyOffset
 
   attr_reader :date
 
