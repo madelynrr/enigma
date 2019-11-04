@@ -57,7 +57,7 @@ class Encrypt
   end
 
   def shift_message_arrays(mess_arrays, final_shifts)
-    mess_arrays.map do |array|
+    rotated = mess_arrays.map do |array|
       rotate_array(array, final_shifts)
     end
   end
@@ -69,9 +69,21 @@ class Encrypt
   def rotate_array(letters, final_shifts)
     array = []
     letters.to_enum.with_index do |letter, index|
-      array << @alphabet.rotate(add_indexes(letter, final_shifts[index])).first
+      if alphabet.include?(letter)
+        array << @alphabet.rotate(add_indexes(letter, final_shifts[index])).first
+      elsif
+        array << letter
+      end
     end
     array
+  end
+
+  def shifted_to_string(shifted_arrays)
+    final_array = shifted_arrays.flatten
+    final_array.join
+  end
+
+  def self.encrypt_messsage
   end
 
 end
