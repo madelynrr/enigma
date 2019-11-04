@@ -13,10 +13,10 @@ class Offset
     date.to_i ** 2
   end
 
-  # def offsets_as_strings(square)
-  #   all_ints = square.to_s.chars
-  #
-  #   all_ints[-4..-1]
-  # end
+  def offsets_as_strings(square)
+    all_ints = square.to_s.chars
+
+    all_ints[-4..-1]
+  end
 
 end
