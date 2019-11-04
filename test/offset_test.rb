@@ -15,11 +15,11 @@ class OffsetTest < Minitest::Test
    assert_equal String, @offset.date.class
    assert_equal 6, @offset.date.chars.length
    assert_equal true, @offset.date.count("0123456789") == 6
- end
+  end
 
 
   def test_it_can_square_date
-    @offset.expects(:formatted_date_to_string).at_least_once.returns("031119")
+    @offset.expects(:date).at_least_once.returns("031119")
 
     assert_equal 968392161, @offset.date_squared
   end
