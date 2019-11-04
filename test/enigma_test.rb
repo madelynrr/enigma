@@ -95,6 +95,8 @@ class EnigmaTest < Minitest::Test
     assert_equal expected, @enigma.final_shifts(key, date)
   end
 
+
+
   def test_it_can_encrypt
     skip
     expected = {
@@ -112,4 +114,5 @@ class EnigmaTest < Minitest::Test
 
     # assert_equal "040895", date
   end
+
 end
