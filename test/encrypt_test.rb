@@ -93,11 +93,11 @@ class EncryptTest < Minitest::Test
     assert_equal expected, @encrypt.final_shifts(key, date)
   end
 
-  def test_it_turns_message_into_array
+  def test_it_turns_message_into_array_of_arrays
     message = "Hello world!"
-    expected = ["H", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d", "!"]
+    expected = [["H", "e", "l", "l"], ["o", " ", "w", "o"], ["r", "l", "d", "!"]]
 
-    assert_equal expected, @encrypt.message_to_array(message)
+    assert_equal expected, @encrypt.message_to_arrays(message)
   end
 
 end
