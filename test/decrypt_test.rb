@@ -17,6 +17,9 @@ class DecryptTest < Minitest::Test
     assert_equal "keder ohulw!!", @decrypt.cipher
     assert_equal "02715", @decrypt.key
     assert_equal "040895", @decrypt.date
+    expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k","l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
+
+    assert_equal expected, @decrypt.alphabet
   end
 
   def test_key_is_valid
@@ -87,6 +90,14 @@ class DecryptTest < Minitest::Test
     assert_equal expected, @decrypt.message_to_arrays(encryption)
   end
 
-  
+  def test_it_rotates_each_letter_in_four_element_array
+    array = ["j", "f", "r", "m"]
+    final_shifts = [2, 1, 6, 1]
+    expected = ["h", "e", "l", "l"]
+
+    assert_equal expected, @decrypt.rotate_array(array, final_shifts)
+  end
+
+
 
 end
