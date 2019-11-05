@@ -7,7 +7,7 @@ require './lib/enigma'
 class EncryptTest < Minitest::Test
 
   def setup
-    @encrypt = Encrypt.new("Hello world!", "02715",  "040895")
+    @encrypt = Encrypt.new("Hello world!!", "02715",  "040895")
   end
 
   def test_it_exists
@@ -15,7 +15,7 @@ class EncryptTest < Minitest::Test
   end
 
   def test_it_has_attributes
-    assert_equal "Hello world!", @encrypt.message
+    assert_equal "Hello world!!", @encrypt.message
     assert_equal "02715", @encrypt.key
     assert_equal "040895", @encrypt.date
     expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k","l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
@@ -63,7 +63,7 @@ class EncryptTest < Minitest::Test
     assert_equal expected, @encrypt.key_to_array(key)
   end
 
-  def test_it_can_format_date_into_hash
+  def test_it_can_format_date_into_array
     date = "040895"
     expected = ["1", "0", "2", "5"]
 
@@ -79,30 +79,23 @@ class EncryptTest < Minitest::Test
   end
 
   def test_it_turns_message_into_array_of_arrays
-    message = "Hello world!"
-    expected = [["h", "e", "l", "l"], ["o", " ", "w", "o"], ["r", "l", "d", "!"]]
+    message = "Hello world!!"
+    expected = [["h", "e", "l", "l"], ["o", " ", "w", "o"], ["r", "l", "d", "!"], ["!"]]
 
     assert_equal expected, @encrypt.message_to_arrays(message)
   end
 
   def test_it_changes_letters_by_corresponding_shift
-    mess_arrays = [["h", "e", "l", "l"], ["o", " ", "w", "o"], ["r", "l", "d", "!"]]
+    mess_arrays = [["h", "e", "l", "l"], ["o", " ", "w", "o"], ["r", "l", "d", "!"], ["!"]]
+    # message = "Hello world!"
 
     final_shifts = [2, 1, 6, 1]
-
-    expected = [["j", "f", "r", "m"], ["q", "a", "b", "p"], ["t", "m", "j", "!"]]
+    expected = "jfrmqabptmj!!"
 
     assert_equal expected, @encrypt.shift_message_arrays(mess_arrays, final_shifts)
   end
 
-  def test_it_can_add_letter_index_to_final_shift
-    letter = "m"
-    final_shift = 2
-
-    assert_equal 14, @encrypt.add_indexes(letter, final_shift)
-  end
-
-  def test_it_rotates_each_letter_in_four_elemet_array
+  def test_it_rotates_each_letter_in_four_element_array
     array = ["h", "e", "l", "l"]
     final_shifts = [2, 1, 6, 1]
     expected = ["j", "f", "r", "m"]
@@ -110,17 +103,9 @@ class EncryptTest < Minitest::Test
     assert_equal expected, @encrypt.rotate_array(array, final_shifts)
   end
 
-  def test_it_turns_shifted_arrays_to_string
-    shifted_arrays = [["j", "f", "r", "m"], ["q", "a", "b", "p"], ["t", "m", "j", "!"]]
-
-    expected = "jfrmqabptmj!"
-
-    assert_equal expected, @encrypt.shifted_to_string(shifted_arrays)
-  end
-
   def test_it_can_encrypt_given_message
     expected = {
-                encryption: "keder ohulw!",
+                encryption: "keder ohulw!!",
                 key: "02715",
                 date: "040895"
                 }
