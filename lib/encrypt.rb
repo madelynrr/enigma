@@ -50,14 +50,14 @@ class Encrypt
   #   end
   # end
 
-  def message_to_arrays(message)
-    characters = message.downcase.chars
-    message_arrays = []
-    until characters.length == 0
-      message_arrays << characters.slice!(0..3)
-    end
-    message_arrays
-  end
+  # def message_to_arrays(message)
+  #   characters = message.downcase.chars
+  #   message_arrays = []
+  #   until characters.length == 0
+  #     message_arrays << characters.slice!(0..3)
+  #   end
+  #   message_arrays
+  # end
 
   def rotate_array(letters, final_shifts)
     letters.map.with_index do |letter, index|
