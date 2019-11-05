@@ -3,13 +3,13 @@ require './lib/cipher_module'
 class Decrypt
   include Cipher
 
-
-  attr_reader :cipher, :key, :date
+  attr_reader :cipher, :key, :date, :alphabet
 
   def initialize(cipher, key, date)
     @cipher = cipher
     @key = key
     @date = date
+    @alphabet = ("a".."z").to_a << " "
   end
 
   def test_key_is_valid(key)
@@ -25,6 +25,16 @@ class Decrypt
       Offset.new(date)
     else
       "Invalid Date"
+    end
+  end
+
+  def rotate_array(letters, final_shifts)
+    letters.map.with_index do |letter, index|
+      if alphabet.include?(letter)
+        @alphabet.rotate(@alphabet.index(letter) - final_shifts[index]).first
+      else
+        letter
+      end
     end
   end
 
