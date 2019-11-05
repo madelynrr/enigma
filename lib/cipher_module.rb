@@ -31,4 +31,11 @@ module Cipher
     message_arrays
   end
 
+  def shift_message_arrays(mess_arrays, final_shifts)
+    final_arrays = mess_arrays.map do |array|
+    rotate_array(array, final_shifts)
+    end
+    final_arrays.flatten.join
+  end
+
 end
