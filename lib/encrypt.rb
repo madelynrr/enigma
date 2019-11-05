@@ -61,15 +61,13 @@ class Encrypt
   end
 
   def rotate_array(letters, final_shifts)
-    array = []
-    letters.to_enum.with_index do |letter, index|
+    letters.map.with_index do |letter, index|
       if alphabet.include?(letter)
-        array << @alphabet.rotate(add_indexes(letter, final_shifts[index])).first
-      elsif
-        array << letter
+        @alphabet.rotate(add_indexes(letter, final_shifts[index])).first
+      else
+        letter
       end
     end
-    array
   end
 
   def shift_message_arrays(mess_arrays, final_shifts)
@@ -78,11 +76,6 @@ class Encrypt
     end
     final_arrays.flatten.join
   end
-
-  # def shifted_to_string(shifted_arrays)
-  #   final_array = shifted_arrays.flatten
-  #   final_array.join
-  # end
 
   def encrypt_message
     x = final_shifts(@key, @date)
