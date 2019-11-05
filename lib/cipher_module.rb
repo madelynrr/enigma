@@ -1,8 +1,8 @@
 module Cipher
 
   def key_to_array(key)
-    key = test_key_is_valid(key)
-    key.number_to_array
+    new_key = test_key_is_valid(key)
+    new_key.number_to_array
   end
 
   def date_to_array(date)
