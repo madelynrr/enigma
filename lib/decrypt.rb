@@ -16,4 +16,12 @@ class Decrypt
     end
   end
 
+  def test_date_is_valid(date)
+    if date.class == String && date.chars.length == 6 && date.count("0123456789") == 6
+      Offset.new(date)
+    else
+      "Invalid Date"
+    end
+  end
+
 end
