@@ -119,7 +119,11 @@ class EncryptTest < Minitest::Test
   end
 
   def test_it_can_encrypt_given_message
-    expected = "keder ohulw!"
+    expected = {
+                encryption: "keder ohulw!",
+                key: "02715",
+                date: "040895"
+                }
 
     assert_equal expected, @encrypt.encrypt_message
   end

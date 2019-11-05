@@ -85,7 +85,12 @@ class Encrypt
 
   def encrypt_message
     x = final_shifts(@key, @date)
-    shifted_to_string(shift_message_arrays(message_to_arrays(@message), x))
+    y = shifted_to_string(shift_message_arrays(message_to_arrays(@message), x))
+    {
+    encryption: y,
+    key: @key,
+    date: @date
+    }
   end
 
 
