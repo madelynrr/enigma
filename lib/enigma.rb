@@ -5,4 +5,9 @@ class Enigma
     encoded.encrypt_message
   end
 
+  def decrypt(ciphertext, key, date)
+    decoded = Decrypt.new(ciphertext, key, date)
+    decoded.decrypt_message
+  end
+
 end
