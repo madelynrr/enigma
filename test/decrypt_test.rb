@@ -80,4 +80,13 @@ class DecryptTest < Minitest::Test
     assert_equal expected, @decrypt.decrypt_message("keder ohulw!!", "02715", "040895")
   end
 
+  def test_it_turns_encryption_into_array_of_arrays
+    encryption = "keder ohulw!!"
+    expected = [["k", "e", "d", "e"], ["r", " ", "o", "h"], ["u", "l", "w", "!"], ["!"]]
+
+    assert_equal expected, @decrypt.message_to_arrays(encryption)
+  end
+
+  
+
 end
