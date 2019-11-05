@@ -63,7 +63,7 @@ class EncryptTest < Minitest::Test
     assert_equal expected, @encrypt.key_to_array(key)
   end
 
-  def test_it_can_format_date_into_hash
+  def test_it_can_format_date_into_array
     date = "040895"
     expected = ["1", "0", "2", "5"]
 
