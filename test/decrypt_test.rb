@@ -33,6 +33,20 @@ class DecryptTest < Minitest::Test
     assert_equal "Invalid Key", @decrypt.test_key_is_valid(key)
   end
 
+  def test_date_is_valid
+    date = "051119"
+    assert_equal "051119", @decrypt.test_date_is_valid(date).date
+
+    date = "51119"
+    assert_equal "Invalid Date", @decrypt.test_date_is_valid(date)
+
+    date = "cccccc"
+    assert_equal "Invalid Date", @decrypt.test_date_is_valid(date)
+
+    date = 151119
+    assert_equal "Invalid Date", @decrypt.test_date_is_valid(date)
+  end
+
   def test_it_can_decrypt_given_the_key_and_date
     skip
     expected = {
