@@ -1,4 +1,8 @@
+require './lib/cipher_module'
+
 class Decrypt
+  include Cipher
+
 
   attr_reader :cipher, :key, :date
 
