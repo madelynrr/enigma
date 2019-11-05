@@ -72,17 +72,6 @@ class DecryptTest < Minitest::Test
     assert_equal expected, @decrypt.final_shifts(key, date)
   end
 
-  def test_it_can_decrypt_given_the_key_and_date
-    skip
-    expected = {
-      encryption: "hello world!!",
-      key: "02715",
-      date: "040895"
-      }
-
-    assert_equal expected, @decrypt.decrypt_message("keder ohulw!!", "02715", "040895")
-  end
-
   def test_it_turns_encryption_into_array_of_arrays
     encryption = "keder ohulw!!"
     expected = [["k", "e", "d", "e"], ["r", " ", "o", "h"], ["u", "l", "w", "!"], ["!"]]
@@ -108,7 +97,6 @@ class DecryptTest < Minitest::Test
   end
 
   def test_it_can_decrypt_given_message
-    skip
     expected = {
                 decryption: "hello world!!",
                 key: "02715",

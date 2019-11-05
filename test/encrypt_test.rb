@@ -87,7 +87,6 @@ class EncryptTest < Minitest::Test
 
   def test_it_changes_letters_by_corresponding_shift
     mess_arrays = [["h", "e", "l", "l"], ["o", " ", "w", "o"], ["r", "l", "d", "!"], ["!"]]
-    # message = "Hello world!"
 
     final_shifts = [2, 1, 6, 1]
     expected = "jfrmqabptmj!!"
