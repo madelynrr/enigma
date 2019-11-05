@@ -119,9 +119,9 @@ class EncryptTest < Minitest::Test
   end
 
   def test_it_can_encrypt_given_message
-    expected = "jfrmqabptmj!"
+    expected = "keder ohulw!"
 
-    assert_equal expected, encrypt_message
+    assert_equal expected, @encrypt.encrypt_message
   end
 
 end
