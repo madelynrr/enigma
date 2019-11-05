@@ -7,7 +7,7 @@ require './lib/enigma'
 class EncryptTest < Minitest::Test
 
   def setup
-    @encrypt = Encrypt.new("Hello world!", "02715",  "040895")
+    @encrypt = Encrypt.new("Hello world!!", "02715",  "040895")
   end
 
   def test_it_exists
@@ -15,7 +15,7 @@ class EncryptTest < Minitest::Test
   end
 
   def test_it_has_attributes
-    assert_equal "Hello world!", @encrypt.message
+    assert_equal "Hello world!!", @encrypt.message
     assert_equal "02715", @encrypt.key
     assert_equal "040895", @encrypt.date
     expected = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k","l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
@@ -79,17 +79,18 @@ class EncryptTest < Minitest::Test
   end
 
   def test_it_turns_message_into_array_of_arrays
-    message = "Hello world!"
-    expected = [["h", "e", "l", "l"], ["o", " ", "w", "o"], ["r", "l", "d", "!"]]
+    message = "Hello world!!"
+    expected = [["h", "e", "l", "l"], ["o", " ", "w", "o"], ["r", "l", "d", "!"], ["!"]]
 
     assert_equal expected, @encrypt.message_to_arrays(message)
   end
 
   def test_it_changes_letters_by_corresponding_shift
-    mess_arrays = [["h", "e", "l", "l"], ["o", " ", "w", "o"], ["r", "l", "d", "!"]]
+    mess_arrays = [["h", "e", "l", "l"], ["o", " ", "w", "o"], ["r", "l", "d", "!"], ["!"]]
+    # message = "Hello world!"
 
     final_shifts = [2, 1, 6, 1]
-    expected = "jfrmqabptmj!"
+    expected = "jfrmqabptmj!!"
 
     assert_equal expected, @encrypt.shift_message_arrays(mess_arrays, final_shifts)
   end
@@ -104,7 +105,7 @@ class EncryptTest < Minitest::Test
 
   def test_it_can_encrypt_given_message
     expected = {
-                encryption: "keder ohulw!",
+                encryption: "keder ohulw!!",
                 key: "02715",
                 date: "040895"
                 }
