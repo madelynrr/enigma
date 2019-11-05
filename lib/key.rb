@@ -1,7 +1,4 @@
-require './lib/key_offset_module'
-
 class Key
-  include KeyOffset
 
   attr_reader :number
 
