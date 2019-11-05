@@ -3,8 +3,8 @@ require './lib/key'
 require './test/key_test'
 require './lib/offset'
 require './test/offset_test.rb'
-require './lib/encrypt'
-require './lib/decrypt'
+require './lib/encryption'
+require './lib/decryption'
 require './lib/enigma'
 
 class EnigmaTest < Minitest::Test

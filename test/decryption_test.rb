@@ -1,16 +1,16 @@
 require './test/test_helper'
 require './lib/key'
 require './lib/offset'
-require './lib/decrypt'
+require './lib/decryption'
 
-class DecryptTest < Minitest::Test
+class DecryptionTest < Minitest::Test
 
   def setup
-    @decrypt = Decrypt.new("keder ohulw!!", "02715", "040895")
+    @decrypt = Decryption.new("keder ohulw!!", "02715", "040895")
   end
 
   def test_it_exists
-    assert_instance_of Decrypt, @decrypt
+    assert_instance_of Decryption, @decrypt
   end
 
   def test_it_has_attributes
