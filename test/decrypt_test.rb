@@ -98,6 +98,16 @@ class DecryptTest < Minitest::Test
     assert_equal expected, @decrypt.rotate_array(array, final_shifts)
   end
 
+  def test_it_changes_letters_by_corresponding_shift
+    mess_arrays = [["j", "f", "r", "m"], ["q", "a", "b", "p"], ["t", "m", "j", "!"], ["!"]]
+    # message = "Hello world!"
+
+    final_shifts = [2, 1, 6, 1]
+    expected = "hello world!!"
+
+    assert_equal expected, @decrypt.shift_message_arrays(mess_arrays, final_shifts)
+  end
+
 
 
 end
