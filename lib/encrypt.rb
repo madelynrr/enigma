@@ -57,8 +57,8 @@ class Encrypt
   end
 
   def shift_message_arrays(mess_arrays, final_shifts)
-    rotated = mess_arrays.map do |array|
-      rotate_array(array, final_shifts)
+    mess_arrays.map do |array|
+    rotate_array(array, final_shifts)
     end
   end
 
@@ -83,7 +83,10 @@ class Encrypt
     final_array.join
   end
 
-  def self.encrypt_messsage
+  def encrypt_message
+    x = final_shifts(@key, @date)
+    shifted_to_string(shift_message_arrays(message_to_arrays(@message), x))
   end
+
 
 end
