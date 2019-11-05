@@ -27,13 +27,13 @@ class DecryptTest < Minitest::Test
     assert_equal "01234", @decrypt.test_key_is_valid(key).number
 
     key = "1234"
-    assert_equal "Invalid Key", @decrypt.test_key_is_valid(key)
+    assert_instance_of Key, @decrypt.test_key_is_valid(key)
 
     key = "class"
-    assert_equal "Invalid Key", @decrypt.test_key_is_valid(key)
+    assert_instance_of Key, @decrypt.test_key_is_valid(key)
 
     key = 12345
-    assert_equal "Invalid Key", @decrypt.test_key_is_valid(key)
+    assert_instance_of Key, @decrypt.test_key_is_valid(key)
   end
 
   def test_date_is_valid
@@ -41,13 +41,13 @@ class DecryptTest < Minitest::Test
     assert_equal "051119", @decrypt.test_date_is_valid(date).date
 
     date = "51119"
-    assert_equal "Invalid Date", @decrypt.test_date_is_valid(date)
+    assert_equal Date.today.strftime("%d%m%y"), @decrypt.test_date_is_valid(date)
 
     date = "cccccc"
-    assert_equal "Invalid Date", @decrypt.test_date_is_valid(date)
+    assert_equal Date.today.strftime("%d%m%y"), @decrypt.test_date_is_valid(date)
 
     date = 151119
-    assert_equal "Invalid Date", @decrypt.test_date_is_valid(date)
+    assert_equal Date.today.strftime("%d%m%y"), @decrypt.test_date_is_valid(date)
   end
 
   def test_it_can_format_key_into_array
