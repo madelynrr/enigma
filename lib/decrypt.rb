@@ -16,7 +16,7 @@ class Decrypt
     if key.class == String && key.chars.length == 5 && key.count("0123456789") == 5
       Key.new(key)
     else
-      "Invalid Key"
+      Key.new
     end
   end
 
@@ -24,7 +24,7 @@ class Decrypt
     if date.class == String && date.chars.length == 6 && date.count("0123456789") == 6
       Offset.new(date)
     else
-      "Invalid Date"
+      Offset.new.date
     end
   end
 
