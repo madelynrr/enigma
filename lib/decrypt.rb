@@ -38,4 +38,14 @@ class Decrypt
     end
   end
 
+  def decrypt_message
+    x = final_shifts(@key, @date)
+    y = shift_message_arrays(message_to_arrays(@cipher), x)
+    {
+    decryption: y,
+    key: @key,
+    date: @date
+    }
+  end
+
 end
