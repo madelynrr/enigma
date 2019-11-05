@@ -21,5 +21,14 @@ module Cipher
       shift.first.to_i + shift.last.to_i
     end
   end
-  
+
+  def message_to_arrays(message)
+    characters = message.downcase.chars
+    message_arrays = []
+    until characters.length == 0
+      message_arrays << characters.slice!(0..3)
+    end
+    message_arrays
+  end
+
 end
