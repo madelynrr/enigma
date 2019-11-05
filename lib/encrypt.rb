@@ -56,12 +56,6 @@ class Encrypt
     message_arrays
   end
 
-  def shift_message_arrays(mess_arrays, final_shifts)
-    mess_arrays.map do |array|
-    rotate_array(array, final_shifts)
-    end
-  end
-
   def add_indexes(letter, final_shift)
     alphabet.index(letter) + final_shift
   end
@@ -78,20 +72,25 @@ class Encrypt
     array
   end
 
-  def shifted_to_string(shifted_arrays)
-    final_array = shifted_arrays.flatten
-    final_array.join
+  def shift_message_arrays(mess_arrays, final_shifts)
+    final_arrays = mess_arrays.map do |array|
+    rotate_array(array, final_shifts)
+    end
+    final_arrays.flatten.join
   end
+
+  # def shifted_to_string(shifted_arrays)
+  #   final_array = shifted_arrays.flatten
+  #   final_array.join
+  # end
 
   def encrypt_message
     x = final_shifts(@key, @date)
-    y = shifted_to_string(shift_message_arrays(message_to_arrays(@message), x))
+    y = shift_message_arrays(message_to_arrays(@message), x)
     {
     encryption: y,
     key: @key,
     date: @date
     }
   end
-
-
 end
