@@ -56,14 +56,10 @@ class Encrypt
     message_arrays
   end
 
-  def add_indexes(letter, final_shift)
-    alphabet.index(letter) + final_shift
-  end
-
   def rotate_array(letters, final_shifts)
     letters.map.with_index do |letter, index|
       if alphabet.include?(letter)
-        @alphabet.rotate(add_indexes(letter, final_shifts[index])).first
+        @alphabet.rotate(@alphabet.index(letter) + final_shifts[index]).first
       else
         letter
       end
