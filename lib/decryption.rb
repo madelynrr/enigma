@@ -47,5 +47,4 @@ class Decryption
     date: @date
     }
   end
-
 end
