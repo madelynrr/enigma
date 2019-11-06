@@ -40,7 +40,7 @@ class Decryption
 
   def decrypt_message
     x = final_shifts(@key, @date)
-    y = shift_message_arrays(message_to_arrays(@cipher), x)
+    y = rotate_message_arrays(message_to_arrays(@cipher), x)
     {
     decryption: y,
     key: @key,

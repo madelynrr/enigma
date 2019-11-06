@@ -40,12 +40,11 @@ class Encryption
 
   def encrypt_message
     shifts = final_shifts(@key, @date)
-    encryption = shift_message_arrays(message_to_arrays(@message), shifts)
+    encryption = rotate_message_arrays(message_to_arrays(@message), shifts)
     {
     encryption: encryption,
     key: @key,
     date: @date
     }
   end
-
 end

@@ -93,7 +93,7 @@ class DecryptionTest < Minitest::Test
     final_shifts = [2, 1, 6, 1]
     expected = "hello world!!"
 
-    assert_equal expected, @decrypt.shift_message_arrays(mess_arrays, final_shifts)
+    assert_equal expected, @decrypt.rotate_message_arrays(mess_arrays, final_shifts)
   end
 
   def test_it_can_decrypt_given_message

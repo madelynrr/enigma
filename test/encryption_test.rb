@@ -91,7 +91,7 @@ class EncryptionTest < Minitest::Test
     final_shifts = [2, 1, 6, 1]
     expected = "jfrmqabptmj!!"
 
-    assert_equal expected, @encrypt.shift_message_arrays(mess_arrays, final_shifts)
+    assert_equal expected, @encrypt.rotate_message_arrays(mess_arrays, final_shifts)
   end
 
   def test_it_rotates_each_letter_in_four_element_array
