@@ -16,8 +16,8 @@ module Cipher
     keys = key_to_array(key)
     offsets = date_to_array(date)
 
-    final_shift = keys.zip(offsets)
-    final_shift.flat_map do |shift|
+    shifts = keys.zip(offsets)
+    shifts.flat_map do |shift|
       shift.first.to_i + shift.last.to_i
     end
   end
