@@ -8,8 +8,8 @@ module Cipher
   def date_to_array(date)
     date_string = date_is_valid(date)
     date_squared = date_string.date_squared(date_string.date)
-    all_ints = date_squared.to_s.chars
-    all_ints[-4..-1]
+    date_ints = date_squared.to_s.chars
+    date_ints[-4..-1]
   end
 
   def final_shifts(key, date)
