@@ -38,16 +38,16 @@ class DecryptionTest < Minitest::Test
 
   def test_date_is_valid
     date = "051119"
-    assert_equal "051119", @decrypt.test_date_is_valid(date).date
+    assert_equal "051119", @decrypt.date_is_valid(date).date
 
     date = "51119"
-    assert_equal Date.today.strftime("%d%m%y"), @decrypt.test_date_is_valid(date)
+    assert_equal Date.today.strftime("%d%m%y"), @decrypt.date_is_valid(date)
 
     date = "cccccc"
-    assert_equal Date.today.strftime("%d%m%y"), @decrypt.test_date_is_valid(date)
+    assert_equal Date.today.strftime("%d%m%y"), @decrypt.date_is_valid(date)
 
     date = 151119
-    assert_equal Date.today.strftime("%d%m%y"), @decrypt.test_date_is_valid(date)
+    assert_equal Date.today.strftime("%d%m%y"), @decrypt.date_is_valid(date)
   end
 
   def test_it_can_format_key_into_array

@@ -41,19 +41,19 @@ class EncryptionTest < Minitest::Test
 
   def test_it_tests_date_is_valid
     date = "040895"
-    assert_equal true, "040895" == @encrypt.test_date_is_valid(date).date
+    assert_equal true, "040895" == @encrypt.date_is_valid(date).date
 
     encrypt_1 = Encryption.new("hello world", "02715", "40895")
     date = "40895"
-    assert_equal false, "40895" == encrypt_1.test_date_is_valid(date).date
+    assert_equal false, "40895" == encrypt_1.date_is_valid(date).date
 
     encrypt_2 = Encryption.new("hello world", "02715", "cccccc")
     date = "cccccc"
-    assert_equal false, "cccccc" == encrypt_2.test_date_is_valid(date).date
+    assert_equal false, "cccccc" == encrypt_2.date_is_valid(date).date
 
     encrypt_3 = Encryption.new("hello world", "02715", 110895)
     date = 110895
-    assert_equal false, 110895 == encrypt_3.test_date_is_valid(date).date
+    assert_equal false, 110895 == encrypt_3.date_is_valid(date).date
   end
 
   def test_it_can_format_key_into_array
