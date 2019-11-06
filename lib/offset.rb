@@ -12,8 +12,6 @@ class Offset
 
   def offsets_as_strings(date_square)
     all_ints = date_square.to_s.chars
-
     all_ints[-4..-1]
   end
-
 end
