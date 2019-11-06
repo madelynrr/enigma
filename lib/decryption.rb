@@ -12,7 +12,7 @@ class Decryption
     @alphabet = ("a".."z").to_a << " "
   end
 
-  def test_key_is_valid(key)
+  def key_is_valid(key)
     if key.class == String && key.chars.length == 5 && key.count("0123456789") == 5
       Key.new(key)
     else
@@ -20,7 +20,7 @@ class Decryption
     end
   end
 
-  def test_date_is_valid(date)
+  def date_is_valid(date)
     if date.class == String && date.chars.length == 6 && date.count("0123456789") == 6
       Offset.new(date)
     else
@@ -40,12 +40,11 @@ class Decryption
 
   def decrypt_message
     x = final_shifts(@key, @date)
-    y = shift_message_arrays(message_to_arrays(@cipher), x)
+    y = rotate_message_arrays(message_to_arrays(@cipher), x)
     {
     decryption: y,
     key: @key,
     date: @date
     }
   end
-
 end

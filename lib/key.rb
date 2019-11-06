@@ -10,7 +10,9 @@ class Key
     integers = number.chars
     individual_keys = []
     integers.each_cons(2) {|integer| individual_keys << integer.join}
-
     individual_keys
   end
 end
+
+
+# Turn this into class method so at least these not instantiating in other class

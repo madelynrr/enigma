@@ -24,30 +24,30 @@ class DecryptionTest < Minitest::Test
 
   def test_key_is_valid
     key = "01234"
-    assert_equal "01234", @decrypt.test_key_is_valid(key).number
+    assert_equal "01234", @decrypt.key_is_valid(key).number
 
     key = "1234"
-    assert_instance_of Key, @decrypt.test_key_is_valid(key)
+    assert_instance_of Key, @decrypt.key_is_valid(key)
 
     key = "class"
-    assert_instance_of Key, @decrypt.test_key_is_valid(key)
+    assert_instance_of Key, @decrypt.key_is_valid(key)
 
     key = 12345
-    assert_instance_of Key, @decrypt.test_key_is_valid(key)
+    assert_instance_of Key, @decrypt.key_is_valid(key)
   end
 
   def test_date_is_valid
     date = "051119"
-    assert_equal "051119", @decrypt.test_date_is_valid(date).date
+    assert_equal "051119", @decrypt.date_is_valid(date).date
 
     date = "51119"
-    assert_equal Date.today.strftime("%d%m%y"), @decrypt.test_date_is_valid(date)
+    assert_equal Date.today.strftime("%d%m%y"), @decrypt.date_is_valid(date)
 
     date = "cccccc"
-    assert_equal Date.today.strftime("%d%m%y"), @decrypt.test_date_is_valid(date)
+    assert_equal Date.today.strftime("%d%m%y"), @decrypt.date_is_valid(date)
 
     date = 151119
-    assert_equal Date.today.strftime("%d%m%y"), @decrypt.test_date_is_valid(date)
+    assert_equal Date.today.strftime("%d%m%y"), @decrypt.date_is_valid(date)
   end
 
   def test_it_can_format_key_into_array
@@ -93,7 +93,7 @@ class DecryptionTest < Minitest::Test
     final_shifts = [2, 1, 6, 1]
     expected = "hello world!!"
 
-    assert_equal expected, @decrypt.shift_message_arrays(mess_arrays, final_shifts)
+    assert_equal expected, @decrypt.rotate_message_arrays(mess_arrays, final_shifts)
   end
 
   def test_it_can_decrypt_given_message
