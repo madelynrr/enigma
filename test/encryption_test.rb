@@ -24,19 +24,19 @@ class EncryptionTest < Minitest::Test
 
   def test_it_tests_key_is_valid_or_generates_new_key
     key = "02715"
-    assert_equal "02715", @encrypt.test_key_is_valid(key).number
+    assert_equal "02715", @encrypt.key_is_valid(key).number
 
     encrypt_2 = Encryption.new("hello world", "2715", "040895")
     key = "2715"
-    assert_equal false, "2715" == encrypt_2.test_key_is_valid(key).number
+    assert_equal false, "2715" == encrypt_2.key_is_valid(key).number
 
     encrypt_3 = Encryption.new("hello world", "class", "040895")
     key = "class"
-    assert_equal false, "class" == encrypt_3.test_key_is_valid(key).number
+    assert_equal false, "class" == encrypt_3.key_is_valid(key).number
 
     encrypt_4 = Encryption.new("hello world", 10234, "040895")
     key = 01234
-    assert_equal false, 01234 == encrypt_4.test_key_is_valid(key).number
+    assert_equal false, 01234 == encrypt_4.key_is_valid(key).number
   end
 
   def test_it_tests_date_is_valid

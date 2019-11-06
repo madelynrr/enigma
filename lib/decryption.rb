@@ -12,7 +12,7 @@ class Decryption
     @alphabet = ("a".."z").to_a << " "
   end
 
-  def test_key_is_valid(key)
+  def key_is_valid(key)
     if key.class == String && key.chars.length == 5 && key.count("0123456789") == 5
       Key.new(key)
     else

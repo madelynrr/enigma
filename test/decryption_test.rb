@@ -24,16 +24,16 @@ class DecryptionTest < Minitest::Test
 
   def test_key_is_valid
     key = "01234"
-    assert_equal "01234", @decrypt.test_key_is_valid(key).number
+    assert_equal "01234", @decrypt.key_is_valid(key).number
 
     key = "1234"
-    assert_instance_of Key, @decrypt.test_key_is_valid(key)
+    assert_instance_of Key, @decrypt.key_is_valid(key)
 
     key = "class"
-    assert_instance_of Key, @decrypt.test_key_is_valid(key)
+    assert_instance_of Key, @decrypt.key_is_valid(key)
 
     key = 12345
-    assert_instance_of Key, @decrypt.test_key_is_valid(key)
+    assert_instance_of Key, @decrypt.key_is_valid(key)
   end
 
   def test_date_is_valid
