@@ -39,10 +39,10 @@ class Encryption
   end
 
   def encrypt_message
-    x = final_shifts(@key, @date)
-    y = shift_message_arrays(message_to_arrays(@message), x)
+    shifts = final_shifts(@key, @date)
+    encryption = shift_message_arrays(message_to_arrays(@message), shifts)
     {
-    encryption: y,
+    encryption: encryption,
     key: @key,
     date: @date
     }
