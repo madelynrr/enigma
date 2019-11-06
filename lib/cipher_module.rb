@@ -1,12 +1,12 @@
 module Cipher
 
   def key_to_array(key)
-    new_key = test_key_is_valid(key)
-    new_key.number_to_array
+    final_key = key_is_valid(key)
+    final_key.number_to_array
   end
 
   def date_to_array(date)
-    date_string = test_date_is_valid(date)
+    date_string = date_is_valid(date)
     date_squared = date_string.date_squared(date_string.date)
     all_ints = date_squared.to_s.chars
     all_ints[-4..-1]
