@@ -37,5 +37,4 @@ module Cipher
     end
     rotated_arrays.flatten.join
   end
-
 end
